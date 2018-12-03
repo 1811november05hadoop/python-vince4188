@@ -37,37 +37,115 @@ Happy Scripting!
 '''
 Use the main function for testing purposes and to show me results for all functions.
 '''
+
+import os
+
 def main():
 	#reverse
+	print('#####REVERSE#####')
 	print(reverse('abcdef'))
 	print(reverse('She sold seashells by the seashore'))
+	try:
+		assert reverse('abcdef') == 'fedcba'
+		assert reverse('She sold seashells by the seashore') == 'erohsaes eht yb sllehsaes dlos ehS'
+		print("#####REVERSE PASSED#####")
+	except:
+		print("#####REVERSE FAILED#####")
 	#acronym
+	print('\n#####ACRONYM#####')
 	print(acronym('Portable Network Graphics'))
 	print(acronym('portable network graphics'))
+	try:
+		assert acronym('Portable Network Graphics') == 'PNG'
+		assert acronym('portabble network graphics') == 'PNG'	
+		print('#####ACRONYM PASSED######')
+	except:
+		print('#####ACRONYM FAILED######')
 	#armstrong
+	print('\n#####ARMSTRONG#####')
 	print("Is 10 an armstrong number: " + str(armstrong(10)))
 	print("Is 153 an armstrong number: " + str(armstrong(153)))
+	try:
+		assert armstrong(10) == False
+		assert armstrong(153) == True
+		print('#####ARMSTRONG PASSED#####')
+	except:
+		print('#####ARMSTRONG FAILED#####')
 	#primeFactors
+	print('\n#####PRIME FACTOR#####')
 	print(primeFactors(8))
+	print([2,2,2])
 	print(primeFactors(901255))
+	try:
+		assert primeFactors(8) == [2,2,2]
+		assert primeFactors(901255) == [5, 17, 23, 461]
+		print('#####PRIME FACTOR PASSED#####')
+	except:
+		print('#####PRIME FACTOR FAILED#####')
 	#whichTriangle
+	print('\n#####WHICH TRIANGLE#####')
 	print(whichTriangle(5,5,5))
 	print(whichTriangle(5,5,10))
 	print(whichTriangle(4,5,6))
+	try:
+		assert whichTriangle(5, 5, 5) == 'equilateral'
+		assert whichTriangle(5, 5, 10) == 'isoceles'
+		assert whichTriangle(4, 5, 6) == 'scalene'
+		print('#####WHICH TRIANGLE PASSED#####')
+	except:
+		print('#####WHICH TRIANGLE FAILED#####')
 	#scrabble
+	print('######SCRABBLE#####')
 	print(scrabble('cabbage'))
+	try:
+		assert scrabble('cabbage') == 14
+		print('#####SCRABBLE PASSED#####')
+	except:
+		print('#####SCRABBLE FAILED#####')
 	#pangram
+	print('\n#####PANGRAM#####')
 	print(str(pangram('The quick brown fox jumps over the lazy dog')))
 	print(str(pangram('not a pangram at all')))
+	try:
+		assert pangram('The quick brown fox jumps over the lazy dog') == True
+		assert pangram('not a pangram at all') == False
+		print('#####PANGRAM PASSED#####')
+	except:
+		print('#####PANGRAM FAILED#####')
 	#sort
+	print('\n#####SORT#####')
 	print(sort([5,4,9,1,2]))
 	print(sort([2,4,5,1,3,1]))
+	try:
+		assert sort([5,4,9,1,2]) == [1,2,4,5,9]
+		assert sort([2,4,5,1,3,1]) == [1,1,2,3,4,5]
+		print('#####SORT PASSED#####')
+	except:
+		print('#####SORT FAILED#####')
 	#rotate
+	print('\n#####ROTATE#####')
 	print(rotate(5, 'omg'))
 	print(rotate(26, 'word'))
 	print(rotate(13, 'The quick brown fox jumps over the lazy dog'))
+	try:
+		assert rotate(5, 'omg') == 'trl'
+		assert rotate(26, 'word') == 'word'
+		assert rotate(13, 'The quick brown fox jumps over the lazy dog') == 'Gur dhvpx oebja sbk whzcf bire gur ynml qbt'
+		print('#####ASSERT PASSED#####')
+	except:
+		print('#####ASSERT FAILED#####')
 	#evenAndOdds
+	print('\n#####EVEN AND ODDS#####')
 	evenAndOdds()
+	#not sure how to implement testing for this one
+	try:
+		print('even.txt: ')
+		os.system('cat even.txt')
+		print('odd.txt: ')
+		os.system('cat odd.txt')
+	except:
+		print('cat not supported')
+	print('#####EVEN AND ODDS COMPLETE#####')
 '''
 1. Reverse a String. Example: reverse("example"); -> "elpmaxe"
 
@@ -116,7 +194,7 @@ return: str -> 'equilateral', 'isoceles', 'scalene'
 def whichTriangle(sideOne, sideTwo, sideThree):
 
 	if sideOne == sideTwo and sideTwo == sideThree:
-		return 'equlateral'
+		return 'equilateral'
 	elif sideOne == sideTwo or sideOne == sideThree or sideTwo == sideThree:
 		return 'isoceles'
 	else:
